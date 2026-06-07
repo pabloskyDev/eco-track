@@ -1,0 +1,71 @@
+<ion-content
+  [fullscreen]="true"
+  class="ion-padding"
+  style="--background: #f4f7f4"
+>
+  <div class="ion-text-center">
+    <img src="assets/icon/leaf-icon.png" alt="Logo" />
+    <ion-title style="margin: 0.5em 0">
+      <h1 style="font-size: 2em; color: #0a3909; font-weight: bold">
+        EcoTrack
+      </h1>
+    </ion-title>
+    <p style="font-size: 1em; color: #555; padding: 0 2em">
+      Start your sustainable journey today! Track your impact, earn rewards, and
+      grow your digital forest.
+    </p>
+  </div>
+  <ion-card class="ion-margin-top" style="--background: #fff">
+    <ion-card-content>
+      <ion-input
+        label="name"
+        labelPlacement="stacked"
+        fill="outline"
+        placeholder="Enter your name"
+        color="success"
+        style="margin-bottom: 1em"
+      ></ion-input>
+      <ion-input
+        label="email"
+        labelPlacement="stacked"
+        fill="outline"
+        placeholder="hello@ecotrack.com"
+        color="success"
+      ></ion-input>
+
+      <ion-card style="--background: #e1e3e1">
+        <ion-card-content>
+          <ion-icon name="shield-outline" slot="start"></ion-icon>
+          <ion-label style="font-size: 0.8em; color: #272727"
+            >Privacy First: Your data is stored locally on this device. We never
+            share your personal information.</ion-label
+          >
+        </ion-card-content>
+      </ion-card>
+
+      <ion-button
+        expand="block"
+        shaped="round"
+        class="ion-margin-top"
+        color="success"
+        mode="ios"
+        style="font-size: 1em"
+        [routerLink]="['/home']"
+        >Start Journey
+        <ion-icon name="arrow-forward-outline" color="white"></ion-icon
+      ></ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="ion-margin-top">
+    <ion-img
+      src="assets/images/plants-image.jpg"
+      alt="Forest Illustration"
+      style="width: 100%; height: auto; border-radius: 8px"
+    ></ion-img>
+  </ion-card>
+
+  <p style="font-size: 0.9em; color: #999; text-align: center; margin-top: 2em">
+    &copy; 2026 EcoTrack. All rights reserved.
+  </p>
+</ion-content>
