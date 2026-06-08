@@ -12,6 +12,7 @@ import {
   addCircleOutline,
   barChartOutline,
   trophyOutline,
+  personOutline,
 } from 'ionicons/icons';
 
 @Component({
@@ -22,6 +23,6 @@ import {
 })
 export class TabsPage {
   constructor() {
-    addIcons({ homeOutline, addCircleOutline, barChartOutline, trophyOutline });
+    addIcons({ homeOutline, addCircleOutline, barChartOutline, trophyOutline, personOutline });
   }
 }

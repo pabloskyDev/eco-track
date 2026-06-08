@@ -40,6 +40,11 @@ export const routes: Routes = [
           import('./trophies/trophies.page').then((m) => m.TrophiesPage),
       },
       {
+        path: 'profile',
+        loadComponent: () =>
+          import('./profile/profile.page').then((m) => m.ProfilePage),
+      },
+      {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full',
