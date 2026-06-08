@@ -11,61 +11,64 @@
       </h1>
     </ion-title>
     <p style="font-size: 1em; color: #555; padding: 0 2em">
-      Start your sustainable journey today! Track your impact, earn rewards, and
-      grow your digital forest.
+      ¡Empieza tu viaje sostenible hoy! Registra tu impacto, gana trofeos y
+      reduce tu huella de carbono.
     </p>
   </div>
+
   <ion-card class="ion-margin-top" style="--background: #fff">
     <ion-card-content>
       <ion-input
-        label="name"
+        label="Nombre"
         labelPlacement="stacked"
         fill="outline"
-        placeholder="Enter your name"
+        placeholder="Tu nombre"
         color="success"
         style="margin-bottom: 1em"
+        [(ngModel)]="name"
       ></ion-input>
       <ion-input
-        label="email"
+        label="Email (opcional)"
         labelPlacement="stacked"
         fill="outline"
-        placeholder="hello@ecotrack.com"
+        placeholder="hola@ecotrack.com"
         color="success"
+        [(ngModel)]="email"
       ></ion-input>
 
-      <ion-card style="--background: #e1e3e1">
+      <ion-card style="--background: #e1e3e1; margin-top: 1em">
         <ion-card-content>
-          <ion-icon name="shield-outline" slot="start"></ion-icon>
-          <ion-label style="font-size: 0.8em; color: #272727"
-            >Privacy First: Your data is stored locally on this device. We never
-            share your personal information.</ion-label
-          >
+          <ion-icon name="shield-outline"></ion-icon>
+          <ion-label style="font-size: 0.8em; color: #272727; margin-left: 0.5em">
+            Privacidad primero: tus datos se guardan localmente en este
+            dispositivo. Nunca compartimos tu información.
+          </ion-label>
         </ion-card-content>
       </ion-card>
 
       <ion-button
         expand="block"
-        shaped="round"
         class="ion-margin-top"
         color="success"
         mode="ios"
         style="font-size: 1em"
-        [routerLink]="['/home']"
-        >Start Journey
-        <ion-icon name="arrow-forward-outline" color="white"></ion-icon
-      ></ion-button>
+        (click)="startJourney()"
+      >
+        Comenzar viaje
+        <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+      </ion-button>
     </ion-card-content>
   </ion-card>
 
   <ion-card class="ion-margin-top">
     <ion-img
       src="assets/images/plants-image.jpg"
-      alt="Forest Illustration"
+      alt="Ilustración de bosque"
       style="width: 100%; height: auto; border-radius: 8px"
     ></ion-img>
   </ion-card>
 
   <p style="font-size: 0.9em; color: #999; text-align: center; margin-top: 2em">
-    &copy; 2026 EcoTrack. All rights reserved.
+    &copy; 2026 EcoTrack. Todos los derechos reservados.
   </p>
 </ion-content>

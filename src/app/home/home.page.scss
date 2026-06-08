@@ -1,0 +1,301 @@
+// ── Variables ─────────────────────────────────────────────────────────────────
+$green-dark:   #0a3909;
+$green-mid:    #2e7d32;
+$green-light:  #e8f5e9;
+$orange:       #e65100;
+$orange-light: #fff3e0;
+$red:          #c62828;
+$red-light:    #fce4ec;
+$text-primary: #1a1a1a;
+$text-muted:   #666;
+$card-shadow:  0 2px 16px rgba(0, 0, 0, 0.07);
+$radius-md:    14px;
+$radius-sm:    10px;
+
+ion-content {
+  --background: #f4f7f4;
+}
+
+// ── Saludo ────────────────────────────────────────────────────────────────────
+.greeting {
+  padding: 1.4em 1.2em 0.6em;
+
+  h2 {
+    font-size: 1.35em;
+    font-weight: 700;
+    color: $green-dark;
+    margin: 0;
+    text-transform: capitalize;
+  }
+
+  p {
+    margin: 0.2em 0 0;
+    font-size: 0.85em;
+    color: $text-muted;
+    text-transform: capitalize;
+  }
+}
+
+// ── Tarjeta CO₂ ───────────────────────────────────────────────────────────────
+.co2-card {
+  margin: 0 0.8em 0.6em;
+  border-radius: $radius-md;
+  box-shadow: $card-shadow;
+  --background: #ffffff;
+
+  ion-card-content {
+    padding: 1.2em 1em;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $text-muted;
+    margin: 0 0 0.8em;
+  }
+}
+
+// Gráfica circular + texto superpuesto
+.chart-wrapper {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  margin: 0 auto 0.8em;
+
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+.chart-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+
+  &__value {
+    font-size: 2.1em;
+    font-weight: 800;
+    color: $green-dark;
+    line-height: 1;
+  }
+
+  &__unit {
+    font-size: 0.8em;
+    font-weight: 600;
+    color: $text-muted;
+    margin-top: 0.15em;
+  }
+
+  &__label {
+    font-size: 0.72em;
+    color: #aaa;
+    margin-top: 0.1em;
+  }
+}
+
+// Fila meta + porcentaje
+.goal-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.2em;
+  margin-bottom: 0.7em;
+
+  &__text {
+    font-size: 0.82em;
+    color: $text-muted;
+  }
+
+  &__pct {
+    font-size: 0.85em;
+    font-weight: 700;
+
+    &--good     { color: $green-mid; }
+    &--warning  { color: $orange; }
+    &--exceeded { color: $red; }
+  }
+}
+
+// Píldora de estado
+.status-pill {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5em;
+  padding: 0.65em 0.9em;
+  border-radius: 20px;
+
+  ion-icon {
+    font-size: 1.1em;
+    flex-shrink: 0;
+    margin-top: 0.1em;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.84em;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  &--good {
+    background: $green-light;
+    color: $green-mid;
+  }
+
+  &--warning {
+    background: $orange-light;
+    color: $orange;
+  }
+
+  &--exceeded {
+    background: $red-light;
+    color: $red;
+  }
+}
+
+// ── Cabeceras de sección ──────────────────────────────────────────────────────
+.section-header {
+  padding: 1.1em 1.2em 0.2em;
+
+  &__title {
+    font-size: 1em;
+    font-weight: 700;
+    color: $green-dark;
+    margin: 0;
+  }
+
+  &__sub {
+    font-size: 0.78em;
+    color: $text-muted;
+    margin: 0.15em 0 0;
+  }
+}
+
+// ── Tarjetas de tendencias ────────────────────────────────────────────────────
+.trends-list {
+  padding: 0 0.8em;
+}
+
+.trend-card {
+  margin: 0.45em 0;
+  border-radius: $radius-sm;
+  box-shadow: $card-shadow;
+  --background: #ffffff;
+  border-left: 4px solid var(--trend-color, #4caf50);
+
+  ion-card-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75em;
+    padding: 0.85em 0.9em;
+  }
+
+  &__rank {
+    font-size: 0.72em;
+    font-weight: 800;
+    color: #aaa;
+    min-width: 14px;
+    text-align: center;
+  }
+
+  &__emoji {
+    font-size: 1.5em;
+    line-height: 1;
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__label {
+    font-size: 0.88em;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 0 0 0.35em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__co2 {
+    font-size: 0.88em;
+    font-weight: 700;
+    color: $green-dark;
+    white-space: nowrap;
+  }
+}
+
+// Barra de proporción dentro de cada tendencia
+.trend-bar {
+  height: 4px;
+  background: #eee;
+  border-radius: 2px;
+  overflow: hidden;
+
+  &__fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.6s ease;
+  }
+}
+
+// ── Tarjeta de consejo ────────────────────────────────────────────────────────
+.tip-card {
+  margin: 0.45em 0.8em 0;
+  border-radius: $radius-md;
+  box-shadow: $card-shadow;
+  overflow: hidden;
+  --background: #ffffff;
+
+  &__image {
+    width: 100%;
+    height: 165px;
+    object-fit: cover;
+    display: block;
+  }
+
+  ion-card-header {
+    padding: 0.9em 1em 0.3em;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-bottom: 0.4em;
+  }
+
+  &__category {
+    font-size: 0.75em;
+    color: $text-muted;
+    font-weight: 500;
+  }
+
+  &__title {
+    font-size: 1em;
+    font-weight: 700;
+    color: $text-primary;
+    line-height: 1.3;
+  }
+
+  &__content {
+    font-size: 0.88em;
+    color: $text-muted;
+    line-height: 1.55;
+    padding-bottom: 1em;
+  }
+}
+
+// ── Espaciado final ───────────────────────────────────────────────────────────
+.bottom-spacer {
+  height: 1.5em;
+}

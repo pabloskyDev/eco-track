@@ -1,13 +1,110 @@
-<ion-header style="--background: #fff">
-  <ion-toolbar>
-    <ion-title>Home</ion-title>
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title>EcoTrack</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" style="--background: #fff">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Home</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true">
+
+  <!-- Saludo -->
+  <div class="greeting">
+    <h2>Hola, {{ userName }} 👋</h2>
+    <p>{{ dateLabel }}</p>
+  </div>
+
+  <!-- ── Tarjeta de huella diaria ───────────────────────────────────────── -->
+  <ion-card class="co2-card">
+    <ion-card-content>
+
+      <p class="co2-card__title">Tu huella hoy</p>
+
+      <!-- Gráfica circular con texto centrado superpuesto -->
+      <div class="chart-wrapper">
+        <canvas baseChart
+          [data]="doughnutData"
+          type="doughnut"
+          [options]="doughnutOptions">
+        </canvas>
+        <div class="chart-center">
+          <span class="chart-center__value">{{ todayCO2 }}</span>
+          <span class="chart-center__unit">kg CO₂</span>
+          <span class="chart-center__label">de {{ dailyGoal }} meta</span>
+        </div>
+      </div>
+
+      <!-- Barra de progreso + porcentaje -->
+      <div class="goal-row">
+        <span class="goal-row__text">Meta diaria: {{ dailyGoal }} kg CO₂</span>
+        <span class="goal-row__pct" [class]="'goal-row__pct--' + statusType">
+          {{ progressPercent }}%
+        </span>
+      </div>
+
+      <!-- Píldora de estado comparado con ayer -->
+      <div class="status-pill" [class]="'status-pill--' + statusType">
+        <ion-icon [name]="statusIcon"></ion-icon>
+        <p>{{ statusMessage }}</p>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+  <!-- ── Tendencias de la semana ─────────────────────────────────────────── -->
+  <div class="section-header">
+    <h3 class="section-header__title">Tendencias de la semana</h3>
+    <p class="section-header__sub">Tus 3 mayores fuentes de CO₂</p>
+  </div>
+
+  <div class="trends-list">
+    @for (trend of weeklyTrends; track trend.category; let i = $index) {
+      <ion-card class="trend-card" [style.--trend-color]="trend.color">
+        <ion-card-content>
+          <span class="trend-card__rank">{{ i + 1 }}</span>
+          <span class="trend-card__emoji">{{ trend.emoji }}</span>
+          <div class="trend-card__info">
+            <p class="trend-card__label">{{ trend.label }}</p>
+            <div class="trend-bar">
+              <div
+                class="trend-bar__fill"
+                [style.width.%]="trend.percentage"
+                [style.background]="trend.color">
+              </div>
+            </div>
+          </div>
+          <span class="trend-card__co2">{{ trend.co2Kg }}&nbsp;kg</span>
+        </ion-card-content>
+      </ion-card>
+    }
+  </div>
+
+  <!-- ── Consejo del día ────────────────────────────────────────────────── -->
+  @if (dailyTip) {
+    <div class="section-header">
+      <h3 class="section-header__title">Consejo del día</h3>
+    </div>
+
+    <ion-card class="tip-card">
+      <img
+        class="tip-card__image"
+        [src]="dailyTip.image"
+        [alt]="dailyTip.title"
+        (error)="onImageError($event)" />
+
+      <ion-card-header>
+        <div class="tip-card__meta">
+          <ion-badge [color]="impactBadgeColor">
+            Impacto {{ dailyTip.impact }}
+          </ion-badge>
+          <span class="tip-card__category">{{ dailyTip.category }}</span>
+        </div>
+        <ion-card-title class="tip-card__title">{{ dailyTip.title }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content class="tip-card__content">
+        {{ dailyTip.content }}
+      </ion-card-content>
+    </ion-card>
+  }
+
+  <div class="bottom-spacer"></div>
 </ion-content>
