@@ -15,19 +15,16 @@ export const routes: Routes = [
   },
   {
     path: 'tabs',
-    loadComponent: () =>
-      import('./tabs/tabs.page').then((m) => m.TabsPage),
+    loadComponent: () => import('./tabs/tabs.page').then((m) => m.TabsPage),
     canActivate: [authGuard],
     children: [
       {
         path: 'home',
-        loadComponent: () =>
-          import('./home/home.page').then((m) => m.HomePage),
+        loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
       },
       {
         path: 'logs',
-        loadComponent: () =>
-          import('./logs/logs.page').then((m) => m.LogsPage),
+        loadComponent: () => import('./logs/logs.page').then((m) => m.LogsPage),
       },
       {
         path: 'stats',
