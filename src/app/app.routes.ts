@@ -10,7 +10,7 @@ export const routes: Routes = [
   {
     path: 'welcome',
     loadComponent: () =>
-      import('./welcome/welcome.page').then((m) => m.WelcomePage),
+      import('./ui/welcome/welcome.page').then((m) => m.WelcomePage),
     canActivate: [onboardingGuard],
   },
   {
@@ -20,26 +20,28 @@ export const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+        loadComponent: () =>
+          import('./ui/home/home.page').then((m) => m.HomePage),
       },
       {
         path: 'logs',
-        loadComponent: () => import('./logs/logs.page').then((m) => m.LogsPage),
+        loadComponent: () =>
+          import('./ui/logs/logs.page').then((m) => m.LogsPage),
       },
       {
         path: 'stats',
         loadComponent: () =>
-          import('./stats/stats.page').then((m) => m.StatsPage),
+          import('./ui/stats/stats.page').then((m) => m.StatsPage),
       },
       {
         path: 'trophies',
         loadComponent: () =>
-          import('./trophies/trophies.page').then((m) => m.TrophiesPage),
+          import('./ui/trophies/trophies.page').then((m) => m.TrophiesPage),
       },
       {
         path: 'profile',
         loadComponent: () =>
-          import('./profile/profile.page').then((m) => m.ProfilePage),
+          import('./ui/profile/profile.page').then((m) => m.ProfilePage),
       },
       {
         path: '',

@@ -13,7 +13,7 @@ import {
   IonTitle,
   ToastController,
 } from '@ionic/angular/standalone';
-import { UserService } from '../core/services/user.service';
+import { UserService } from '../../core/services/user.service';
 
 @Component({
   selector: 'app-welcome',
