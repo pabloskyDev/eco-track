@@ -1,16 +1,17 @@
 // ── Variables ─────────────────────────────────────────────────────────────────
-$green-dark:   #0a3909;
-$green-mid:    #2e7d32;
-$green-light:  #e8f5e9;
-$orange:       #e65100;
+$green-dark: #0a3909;
+$green-mid: #2e7d32;
+$green-light: #e8f5e9;
+$green-default: #006600;
+$orange: #e65100;
 $orange-light: #fff3e0;
-$red:          #c62828;
-$red-light:    #fce4ec;
+$red: #c62828;
+$red-light: #fce4ec;
 $text-primary: #1a1a1a;
-$text-muted:   #666;
-$card-shadow:  0 2px 16px rgba(0, 0, 0, 0.07);
-$radius-md:    14px;
-$radius-sm:    10px;
+$text-muted: #666;
+$card-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+$radius-md: 14px;
+$radius-sm: 10px;
 
 ion-content {
   --background: #f4f7f4;
@@ -118,9 +119,15 @@ ion-content {
     font-size: 0.85em;
     font-weight: 700;
 
-    &--good     { color: $green-mid; }
-    &--warning  { color: $orange; }
-    &--exceeded { color: $red; }
+    &--good {
+      color: $green-mid;
+    }
+    &--warning {
+      color: $orange;
+    }
+    &--exceeded {
+      color: $red;
+    }
   }
 }
 
@@ -158,6 +165,26 @@ ion-content {
   &--exceeded {
     background: $red-light;
     color: $red;
+  }
+}
+
+.home-header {
+  background-color: $green-default;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 0 0.4em;
+
+  & ion-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+    }
   }
 }
 
