@@ -23,8 +23,8 @@ import { BaseChartDirective } from 'ng2-charts';
 import {
   DAILY_RECOMMENDATIONS,
   DailyRecommendation,
-} from '../../core/data/recommendations.data';
-import { UserService } from '../../core/services/user.service';
+} from '../../../core/data/recommendations.data';
+import { UserService } from '../../../core/services/user.service';
 
 interface WeeklyTrend {
   category: string;

@@ -10,38 +10,41 @@ export const routes: Routes = [
   {
     path: 'welcome',
     loadComponent: () =>
-      import('./ui/welcome/welcome.page').then((m) => m.WelcomePage),
+      import('./ui/pages/welcome/welcome.page').then((m) => m.WelcomePage),
     canActivate: [onboardingGuard],
   },
   {
     path: 'tabs',
-    loadComponent: () => import('./tabs/tabs.page').then((m) => m.TabsPage),
+    loadComponent: () =>
+      import('./ui/shared/tabs/tabs.page').then((m) => m.TabsPage),
     canActivate: [authGuard],
     children: [
       {
         path: 'home',
         loadComponent: () =>
-          import('./ui/home/home.page').then((m) => m.HomePage),
+          import('./ui/pages/home/home.page').then((m) => m.HomePage),
       },
       {
         path: 'logs',
         loadComponent: () =>
-          import('./ui/logs/logs.page').then((m) => m.LogsPage),
+          import('./ui/pages/logs/logs.page').then((m) => m.LogsPage),
       },
       {
         path: 'stats',
         loadComponent: () =>
-          import('./ui/stats/stats.page').then((m) => m.StatsPage),
+          import('./ui/pages/stats/stats.page').then((m) => m.StatsPage),
       },
       {
         path: 'trophies',
         loadComponent: () =>
-          import('./ui/trophies/trophies.page').then((m) => m.TrophiesPage),
+          import('./ui/pages/trophies/trophies.page').then(
+            (m) => m.TrophiesPage,
+          ),
       },
       {
         path: 'profile',
         loadComponent: () =>
-          import('./ui/profile/profile.page').then((m) => m.ProfilePage),
+          import('./ui/pages/profile/profile.page').then((m) => m.ProfilePage),
       },
       {
         path: '',
