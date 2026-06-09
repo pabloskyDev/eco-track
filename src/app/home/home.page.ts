@@ -1,29 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartData, ChartOptions } from 'chart.js';
-import { BaseChartDirective } from 'ng2-charts';
 import {
-  IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
+  IonAvatar,
+  IonBadge,
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonCardTitle,
+  IonContent,
+  IonHeader,
   IonIcon,
-  IonBadge,
+  IonTitle,
+  IonToolbar,
 } from '@ionic/angular/standalone';
+import { ChartData, ChartOptions } from 'chart.js';
 import { addIcons } from 'ionicons';
 import {
+  alertCircleOutline,
   trendingDownOutline,
   trendingUpOutline,
-  alertCircleOutline,
 } from 'ionicons/icons';
-import { UserService } from '../core/services/user.service';
+import { BaseChartDirective } from 'ng2-charts';
 import {
   DAILY_RECOMMENDATIONS,
   DailyRecommendation,
 } from '../core/data/recommendations.data';
+import { UserService } from '../core/services/user.service';
 
 interface WeeklyTrend {
   category: string;
@@ -83,6 +84,7 @@ const MOCK_WEEKLY_TRENDS: WeeklyTrend[] = [
     IonCardTitle,
     IonIcon,
     IonBadge,
+    IonAvatar,
   ],
 })
 export class HomePage implements OnInit {
