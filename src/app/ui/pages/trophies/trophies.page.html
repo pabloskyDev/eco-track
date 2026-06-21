@@ -4,8 +4,90 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" style="--background: #f4f7f4">
-  <div style="padding: 2em; text-align: center; color: #666">
-    <p>Próximamente: trofeos, puntos y retos personalizados.</p>
-  </div>
+<ion-content [fullscreen]="true" class="trophies-page">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <div class="header">
+          <h2>🏆 Tus Trofeos</h2>
+          <p class="subtitle">{{ unlockedCount }} / {{ totalCount }} Desbloqueados</p>
+          <ion-progress-bar value="{{ unlockedCount / totalCount }}"></ion-progress-bar>
+          <p class="percent">{{ (unlockedCount / totalCount * 100) | number:'1.0-0' }}% completado</p>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-segment value="all" (ionChange)="setFilter($any($event.detail).value)">
+          <ion-segment-button value="all">Todos</ion-segment-button>
+          <ion-segment-button value="unlocked">Ganados</ion-segment-button>
+          <ion-segment-button value="locked">Bloqueados</ion-segment-button>
+          <ion-segment-button value="epic">Épicos</ion-segment-button>
+          <ion-segment-button value="new">Nuevos</ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="grid" id="trophies-grid">
+      <ion-col size="4" *ngFor="let t of visibleTrophies()">
+        <ion-card class="trophy-card" [ngClass]="{
+            unlocked: t.unlocked,
+            locked: !t.unlocked,
+            epic: t.rarity === 'Epic',
+            legendary: t.rarity === 'Legendary',
+            new: t.isNew
+          }" (click)="open(t)">
+          <ion-card-content class="content">
+            <div class="icon">{{ t.icon }}</div>
+            <div class="name">{{ t.name }}</div>
+            <ion-badge *ngIf="t.isNew" color="warning" class="new-badge">NEW</ion-badge>
+            <div class="rarity">{{ t.rarity }}</div>
+            <div class="progress">
+              <ion-progress-bar [value]="t.progress / 100"></ion-progress-bar>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="note">Selecciona un trofeo para ver detalles</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-modal [isOpen]="showModal" (ionModalDidDismiss)="close()">
+    <ng-container *ngIf="selected">
+      <ion-header>
+        <ion-toolbar color="success">
+          <ion-title>{{ selected.name }}</ion-title>
+          <ion-button slot="end" fill="clear" (click)="close()">Cerrar</ion-button>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-card>
+          <ion-card-header>
+            <div class="modal-top">
+              <ion-avatar class="modal-avatar">{{ selected.icon }}</ion-avatar>
+              <div class="modal-meta">
+                <h3>{{ selected.name }}</h3>
+                <p class="rarity">{{ selected.rarity }}</p>
+                <p class="cond">Condición: {{ selected.condition }}</p>
+              </div>
+            </div>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{ selected.description }}</p>
+            <p *ngIf="selected.unlocked">Conseguido: {{ selected.unlockedAt }}</p>
+            <p>Progreso: {{ selected.progress }}%</p>
+            <ion-progress-bar [value]="selected.progress / 100"></ion-progress-bar>
+            <div class="actions">
+              <ion-button expand="block" color="primary">Ver consejos para desbloquear</ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-content>
+    </ng-container>
+  </ion-modal>
+
 </ion-content>

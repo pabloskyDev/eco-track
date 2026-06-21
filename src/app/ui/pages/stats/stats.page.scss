@@ -1,0 +1,16 @@
+/* Styles for Estadísticas page */
+.stats-page { padding: 8px 12px; --ion-background-color: #f4f7f4; }
+.title h2 { margin: 0; font-size: 1.2rem; }
+.subtitle { color:#666; margin-bottom:8px }
+.kpi-row { margin-top: 8px; }
+.kpi { text-align:center; padding:12px; }
+.kpi-label { font-size:0.8rem; color:#666 }
+.kpi-value { font-size:1.25rem; font-weight:700; margin-top:6px }
+.chart-placeholder { height:180px; display:flex; align-items:center; justify-content:center; color:#999; background:linear-gradient(180deg,#fff,#f7fff7); border-radius:8px }
+.chart-wrapper { height: 220px; }
+.chart-wrapper.small { height: 160px; }
+.chart-wrapper canvas { width: 100% !important; height: 100% !important; }
+.category-legend { display:flex; gap:8px; justify-content:space-around; margin-top:10px; color:#444 }
+.compare-row { display:flex; flex-direction:column; gap:6px }
+.compare-value.positive { color:var(--ion-color-success); font-weight:700 }
+.recommendation { margin-bottom:8px }
