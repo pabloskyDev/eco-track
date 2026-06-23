@@ -5,7 +5,162 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" style="--background: #f4f7f4">
-  <div style="padding: 2em; text-align: center; color: #666">
-    <p>Próximamente: Un perfil detallado del usuario</p>
-  </div>
+  <ion-grid style="padding: 1em; color: #333">
+    <ion-row>
+      <ion-col size="12">
+        <div style="text-align:center; margin-bottom: 1rem; color: #666">
+          <h2>Perfil Detallado del Usuario</h2>
+          <p>{{ subtitle }}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-content>
+            <div style="display:flex; align-items:center; gap:1rem">
+              <ion-avatar style="width:64px; height:64px; background:#e6f4ea; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:1.25rem">
+                <span *ngIf="user">{{ initials(user.name) }}</span>
+                <span *ngIf="!user">MT</span>
+              </ion-avatar>
+              <div style="flex:1">
+                <h3 *ngIf="user">{{ user.name }}</h3>
+                <p *ngIf="user">{{ user.email }}</p>
+                <p *ngIf="user"><small>Puntos: {{ user.totalPoints }}</small></p>
+                <p *ngIf="user"><small>Miembro desde: {{ user.createdAt | date:'mediumDate' }}</small></p>
+                <div *ngIf="!user" style="color:#666">No existe perfil. Use la pantalla de bienvenida para crear uno.</div>
+              </div>
+              <div>
+                <ion-button color="primary" size="small" (click)="toggleEdit()">{{ editing ? 'Cancelar' : 'Editar' }}</ion-button>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="editing && user">
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Editar perfil</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-label position="stacked">Nombre</ion-label>
+                <ion-input [(ngModel)]="user!.name" placeholder="Nombre"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked">Email</ion-label>
+                <ion-input [(ngModel)]="user!.email" type="email" placeholder="email@ejemplo.com"></ion-input>
+              </ion-item>
+            </ion-list>
+            <div style="display:flex; gap:0.5rem; margin-top:1rem">
+              <ion-button expand="block" color="success" (click)="saveProfile()">Guardar</ion-button>
+              <ion-button expand="block" color="medium" (click)="toggleEdit()">Cancelar</ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" size-md="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Segmento objetivo</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{ segment.age }}</p>
+            <p>{{ segment.gender }}</p>
+            <p>{{ segment.education }}</p>
+            <p>{{ segment.socioeconomic }}</p>
+            <p>{{ segment.occupation }}</p>
+            <p>{{ segment.location }}</p>
+            <p>{{ segment.tech }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="12" size-md="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Buyer Persona</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h3>{{ persona.name }}, {{ persona.age }}</h3>
+            <p><strong>Profesión:</strong> {{ persona.profession }}</p>
+            <p><strong>Ciudad:</strong> {{ persona.city }}</p>
+            <p><strong>Ingresos aprox.:</strong> {{ persona.income }}</p>
+            <p><strong>Estilo de vida:</strong> {{ persona.lifestyle }}</p>
+            <p><strong>Valores:</strong> {{ persona.values }}</p>
+            <p><strong>Conciencia ambiental:</strong> {{ persona.environmentalAwareness }}</p>
+            <p><strong>Uso diario móvil:</strong> {{ persona.phoneUsage }}</p>
+            <p><em>"{{ persona.quote }}"</em></p>
+            <p><strong>Foto sugerida:</strong> {{ persona.photo }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Motivaciones</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p [innerHTML]="motivations"></p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Necesidades</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p [innerHTML]="needs"></p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Frustraciones y puntos de dolor</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p [innerHTML]="frustrations"></p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Comportamiento digital</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p [innerHTML]="digitalBehavior"></p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Escenario de uso</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p [innerHTML]="usageScenario"></p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Implicaciones de diseño</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p [innerHTML]="designImplications"></p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

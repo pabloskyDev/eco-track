@@ -1,0 +1,85 @@
+/* Styles for Trophies page - visual states and layout */
+.trophies-page {
+  --ion-background-color: #f4f7f4;
+  padding: 8px 12px;
+}
+.header h2 {
+  margin: 0 0 4px 0;
+  font-size: 1.2rem;
+}
+.subtitle {
+  color: #666;
+  margin: 4px 0 8px 0;
+}
+.percent {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+.grid ion-col {
+  padding: 6px;
+}
+.trophy-card {
+  text-align: center;
+  padding: 12px 8px;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  border-radius: 10px;
+}
+.trophy-card .icon {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+.trophy-card .name {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.trophy-card .rarity {
+  font-size: 0.7rem;
+  color: #888;
+  margin-top: 6px;
+}
+.trophy-card .progress {
+  margin-top: 8px;
+}
+.trophy-card.unlocked {
+  background: linear-gradient(135deg, rgba(226,249,235,0.8), rgba(240,255,245,0.6));
+  box-shadow: 0 6px 14px rgba(34,139,84,0.08);
+}
+.trophy-card.unlocked .icon {
+  transform: scale(1.05);
+}
+.trophy-card.locked {
+  filter: grayscale(1) contrast(0.85) opacity(0.65);
+}
+.trophy-card.legendary {
+  border: 2px solid linear-gradient(45deg,#ffd700,#ff7a18);
+  box-shadow: 0 0 20px rgba(255,215,0,0.12);
+}
+.trophy-card.epic {
+  box-shadow: 0 0 12px rgba(128,0,128,0.08);
+}
+.trophy-card.new {
+  position: relative;
+}
+.new-badge {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+}
+.note {
+  color: #666;
+  text-align: center;
+  margin-top: 8px;
+}
+.modal-top {
+  display:flex; gap:12px; align-items:center;
+}
+.modal-avatar {
+  font-size: 32px; width:56px; height:56px; display:flex; align-items:center; justify-content:center; background:#e6f4ea; border-radius:12px;
+}
+.actions { margin-top: 12px; }
+
+/* Microanimations */
+.trophy-card.unlocked { animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 0% { transform: translateY(0) scale(1); } 50% { transform: translateY(-3px) scale(1.02);} 100% { transform: translateY(0) scale(1);} }
