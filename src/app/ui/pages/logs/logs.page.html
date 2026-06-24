@@ -4,8 +4,105 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" style="--background: #f4f7f4">
-  <div style="padding: 2em; text-align: center; color: #666">
-    <p>Próximamente: modal de registro de actividades con cálculo de CO₂ en tiempo real.</p>
+<ion-content
+  [fullscreen]="true"
+  style="--background: #f4f7f4"
+  class="ion-padding"
+>
+  <div class="header-section ion-margin-bottom">
+    <h1 class="main-title">Track Your Impact</h1>
+    <p class="subtitle">
+      Small actions lead to big changes. What did you do for the planet today?
+    </p>
   </div>
+  <div class="category-pills ion-margin-bottom">
+    <ion-button
+      [color]="selectedCategory === 'transport' ? 'success' : 'gray'"
+      [class.active]="selectedCategory === 'transport'"
+      shape="round"
+      (click)="setCategory('transport')"
+    >
+      <ion-icon slot="start" name="car-sport-outline"></ion-icon>
+      Transport
+    </ion-button>
+
+    <ion-button
+      [color]="selectedCategory === 'food' ? 'success' : 'gray'"
+      [class.active]="selectedCategory === 'food'"
+      shape="round"
+      (click)="setCategory('food')"
+    >
+      <ion-icon slot="start" name="restaurant-outline"></ion-icon>
+      Food
+    </ion-button>
+
+    <ion-button
+      [color]="selectedCategory === 'energy' ? 'success' : 'gray'"
+      [class.active]="selectedCategory === 'energy'"
+      shape="round"
+      class="icon-only-btn"
+      (click)="setCategory('energy')"
+    >
+      <ion-icon name="flash-outline"></ion-icon>
+    </ion-button>
+  </div>
+  <ion-card class="custom-card ion-no-margin ion-margin-bottom">
+    <ion-card-content>
+      <ion-label class="section-label">Distance Traveled (km)</ion-label>
+      <div class="input-container">
+        <ion-input
+          type="number"
+          placeholder="0.0"
+          [value]="distance"
+          (ionChange)="distance = $event.detail.value"
+        >
+        </ion-input>
+        <span class="input-suffix">km</span>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="mode-section ion-margin-bottom">
+    <ion-label class="section-label">Mode of Transport</ion-label>
+
+    <div class="mode-grid">
+      <div
+        class="mode-card"
+        [class.active]="selectedMode === 'bike'"
+        (click)="setMode('bike')"
+      >
+        <ion-icon name="bicycle-outline"></ion-icon>
+        <span>Bike</span>
+      </div>
+
+      <div
+        class="mode-card"
+        [class.active]="selectedMode === 'bus'"
+        (click)="setMode('bus')"
+      >
+        <ion-icon name="bus-outline"></ion-icon>
+        <span>Bus</span>
+      </div>
+
+      <div
+        class="mode-card"
+        [class.active]="selectedMode === 'car'"
+        (click)="setMode('car')"
+      >
+        <ion-icon name="car-outline"></ion-icon>
+        <span>Car</span>
+      </div>
+    </div>
+  </div>
+
+  <ion-button
+    expand="block"
+    color="success"
+    shape="round"
+    class="save-btn ion-margin-top"
+    (click)="saveActivity()"
+  >
+    <ion-icon slot="start" name="save-outline"></ion-icon>
+    Save Activity
+  </ion-button>
 </ion-content>

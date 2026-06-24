@@ -1,0 +1,129 @@
+// Variables locales
+$dark-green: #234823;
+$light-bg: #f5f7f5;
+$border-radius-large: 24px;
+
+.main-title {
+  color: $dark-green;
+  font-weight: 800;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #100f0f;
+  font-size: 15px;
+  line-height: 1.4;
+  margin-top: 0;
+}
+
+/* Categorías Flexbox */
+.category-pills {
+  display: flex;
+  gap: 10px;
+
+  ion-button {
+    --box-shadow: none;
+    text-transform: capitalize;
+    font-weight: 600;
+
+    &.active {
+      --background: #234823;
+      --color: #ffffff;
+    }
+    &:not(.active) {
+      --background: #e9ece9;
+      --color: #333;
+    }
+  }
+
+  .icon-only-btn {
+    --padding-start: 15px;
+    --padding-end: 15px;
+  }
+}
+
+/* Tarjeta y Labels */
+.custom-card {
+  --background: transparent;
+  box-shadow: none;
+  border: 1px solid #e2e5e2;
+  border-radius: $border-radius-large;
+  background-color: #f1f4f1;
+}
+
+.section-label {
+  display: block;
+  font-weight: 500;
+  color: #111;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+/* Contenedor de Input */
+.input-container {
+  display: flex;
+  align-items: center;
+  background: #e5e8e5;
+  border-radius: 16px;
+  padding: 0 16px;
+
+  ion-input {
+    --padding-start: 0;
+    font-size: 16px;
+    color: #333;
+  }
+
+  .input-suffix {
+    color: #333;
+    font-weight: 500;
+  }
+}
+
+/* Grid de Modos de Transporte */
+.mode-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mode-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+  border-radius: $border-radius-large;
+  background-color: #f1f4f1;
+  border: 1px solid #e2e5e2;
+  color: #333;
+  transition: all 0.2s ease;
+
+  ion-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+
+  span {
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  &.active {
+    background-color: $dark-green;
+    color: white;
+    border-color: $dark-green;
+  }
+}
+
+/* Botón Final */
+.save-btn {
+  --background: #1f3b1f;
+  --box-shadow: none;
+  margin-top: 40px;
+  height: 56px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
